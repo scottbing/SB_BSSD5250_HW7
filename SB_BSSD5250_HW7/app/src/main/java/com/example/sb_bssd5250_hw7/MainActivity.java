@@ -39,12 +39,6 @@ public class MainActivity extends AppCompatActivity  implements NotesData.NotesD
         // setup an array of notes
         ArrayList<Note> notesArray = NotesData.getInstance(this).getNoteList();
 
-        setupViewport();
-
-    }
-
-    private void setupViewport() {
-
         NotesData.getInstance(this).setListener(this);
 
         notesRV	= new RecyclerView(  this);
@@ -83,7 +77,7 @@ public class MainActivity extends AppCompatActivity  implements NotesData.NotesD
             note.setName("Note New " + String.valueOf(i));
             note.setDesc("Desc New " + String.valueOf(i++));
             NotesData.getInstance(MainActivity.this).getNoteList().add(note);
-            setupViewport();
+            NotesData.getInstance(null).refreshNotes();
 
         }
     };
