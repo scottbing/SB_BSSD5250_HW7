@@ -1,5 +1,6 @@
 package com.example.sb_bssd5250_hw7;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity  implements NotesData.NotesDataUpdatedListener {
 
     private RecyclerView notesRV;
+    private NotesAdapter notesAdapter;
     private int i = 1;
 
 
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity  implements NotesData.NotesD
         notesRV	= new RecyclerView(  this);
         notesRV.setBackgroundColor(Color.RED);
 
-        NotesAdapter notesAdapter = new NotesAdapter();
+        notesAdapter = new NotesAdapter();
         notesAdapter.setmContext(this);
         notesRV.setAdapter(notesAdapter);
         notesRV.setLayoutManager(new LinearLayoutManager( this));
@@ -72,13 +74,25 @@ public class MainActivity extends AppCompatActivity  implements NotesData.NotesD
         public void onClick(View view) {
             Log.d("addClick Listener", "add clicked");
             Note note = new Note();
-            //note.setName("Note New");
-            //note.setDesc("Desc New");
-            note.setName("Note New " + String.valueOf(i));
-            note.setDesc("Desc New " + String.valueOf(i++));
+            note.setName("Enter a Note");
+            note.setDesc("Enter a Description");
             NotesData.getInstance(MainActivity.this).getNoteList().add(note);
             NotesData.getInstance(null).refreshNotes();
 
+
         }
     };
+
+    /*@Override
+    public void onBindViewHolder(@NonNull NotesAdapter.ViewHolder holder, int position) {
+
+        //get the singleton of all notes data, get teh array in it, get the item at position
+        Note note = NotesData.getInstance(MainActivity.mContext).getNoteList().get(position);
+        //the holder the adapter already made for this item is now populated
+        holder.nameView.setText(note.getName());
+        holder.dateView.setText(note.getDate());
+        holder.descView.setText(note.getDesc());
+        holder.position = position;
+
+    }*/
 }

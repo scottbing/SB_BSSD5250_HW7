@@ -126,9 +126,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         //get the singleton of all notes data, get teh array in it, get the item at position
         Note note = NotesData.getInstance(mContext).getNoteList().get(position);
         //the holder the adapter already made for this item is now populated
-        holder.nameView.setText(note.getName());
-        holder.dateView.setText(note.getDate());
-        holder.descView.setText(note.getDesc());
+        holder.nameView.setHint(note.getName());
+        holder.dateView.setHint(note.getName());
+        holder.descView.setHint(note.getDesc());
         holder.position = position;
 
     }
