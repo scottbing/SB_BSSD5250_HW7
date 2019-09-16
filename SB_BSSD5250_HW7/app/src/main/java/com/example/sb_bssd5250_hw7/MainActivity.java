@@ -74,8 +74,9 @@ public class MainActivity extends AppCompatActivity  implements NotesData.NotesD
         public void onClick(View view) {
             Log.d("addClick Listener", "add clicked");
             Note note = new Note();
-            note.setName("Enter a Note");
-            note.setDesc("Enter a Description");
+            note.setName("Name");
+            note.setDate("Date");
+            note.setDesc("Description");
             NotesData.getInstance(MainActivity.this).getNoteList().add(note);
             NotesData.getInstance(null).refreshNotes();
 

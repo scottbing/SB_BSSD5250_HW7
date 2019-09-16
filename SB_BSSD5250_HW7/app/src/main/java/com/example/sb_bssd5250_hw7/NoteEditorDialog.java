@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.util.Log;
@@ -38,14 +39,22 @@ public class NoteEditorDialog extends DialogFragment {
         Note note = NotesData.getInstance(null).getNoteList().get(position);
 
         nameText = new EditText(getActivity());
-        //nameText.setHint("Enter Name");
-        nameText.setText(note.getName());
+        if (note.getName() == "Name" ) {
+            nameText.setHint("Enter a Name");
+            nameText.setHintTextColor(Color.parseColor("#03fcf0"));
+        }
+
         dateText = new EditText(getActivity());
-        //dateText.setHint("Enter Date");
-        dateText.setText(note.getDate());
+        if (note.getDate() == "Date" ) {
+            dateText.setHint("Enter a Date");
+            dateText.setHintTextColor(Color.parseColor("#03fcf0"));
+        }
+
         descText = new EditText(getActivity());
-        //descText.setHint("Enter Description");
-        descText.setText(note.getDesc());
+        if (note.getDesc() == "Description" ) {
+            descText.setHint("Enter a Description");
+            descText.setHintTextColor(Color.parseColor("#03fcf0"));
+        }
 
         // this is taken from: https://stackoverflow.com/questions/12876624/multiple-edittext-objects-in-alertdialog
         LinearLayout alertLayout = new LinearLayout(getContext());
